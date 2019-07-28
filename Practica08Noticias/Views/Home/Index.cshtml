@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Practica08Noticias.Models.Noticias>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4">Noticias importantes</h1>
+        <p class="lead">Esta página muestra las últimas 10 noticias de la mas reciente a la más antigua.</p>
+    </div>
+</div>
+
+@foreach (var noticia in Model)
+{
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">@noticia.Titulo</h4>
+            <p class="card-text">@noticia.Contenido</p>
+            <a href="#" class="card-link">@noticia.Categoria.Nombre</a>
+            <a asp-controller="Home" asp-action="Noticia" asp-route-id="@noticia.NoticiasID" class="card-link">Leer mas..</a>
+        </div>
+        <div class="card-footer">Publicado el @noticia.FechaPublicacion</div>
+    </div>
+}
